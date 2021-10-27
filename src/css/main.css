@@ -10,7 +10,9 @@ body {
   position: relative;
 }
 #navbar .navbar {
-  padding: 10px 0;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 #navbar .navbar .logo img {
   width: 50px;
@@ -19,7 +21,7 @@ body {
   width: 700px;
   height: 40px;
   padding: 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
 }
@@ -67,6 +69,87 @@ body {
 }
 #navbar .navbar .links ul li a:hover::before, #navbar .navbar .links ul li a:hover::after {
   transform: scaleX(1);
+}
+#navbar .navbar .sidebar {
+  position: relative;
+}
+#navbar .navbar .sidebar .hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 25px;
+  cursor: pointer;
+  position: absolute;
+  right: 2%;
+  top: -15px;
+  z-index: 3;
+}
+#navbar .navbar .sidebar .hamburger .line1 {
+  transform-origin: 0 0;
+}
+#navbar .navbar .sidebar .hamburger .line3 {
+  transform-origin: 0 100%;
+}
+#navbar .navbar .sidebar .hamburger span {
+  display: block;
+  width: 30px;
+  height: 4px;
+  background-color: whitesmoke;
+  border-radius: 36px;
+  transition: 0.7s;
+}
+#navbar .navbar .sidebar .hamburger span.show1 {
+  transition: all 0.7s;
+  transform: rotate(45deg);
+  background-color: white;
+}
+#navbar .navbar .sidebar .hamburger span.show2 {
+  opacity: 0;
+  transition: all 0.7s;
+}
+#navbar .navbar .sidebar .hamburger span.show3 {
+  transition: all 0.7s;
+  transform: rotate(-45deg) translate(0, 0);
+  background-color: white;
+}
+#navbar .navbar .sidebar .links {
+  position: fixed;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 0%;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+  transform: translate(0, 30);
+}
+#navbar .navbar .sidebar .links.active {
+  width: 50%;
+  visibility: visible;
+  transform: translate(0, 0);
+  opacity: 1;
+}
+#navbar .navbar .sidebar .links ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  background-color: #b16c6c;
+}
+@media (min-width: 992px) {
+  #navbar .navbar {
+    padding: 10px 0;
+  }
+  #navbar .navbar .links {
+    display: flex;
+  }
+  #navbar .navbar .sidebar {
+    display: none;
+  }
+  #navbar .navbar .sidebar .hamburger {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
