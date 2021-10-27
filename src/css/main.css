@@ -8,6 +8,7 @@ body {
   border-bottom: 1px solid whitesmoke;
   background-color: transparent;
   position: relative;
+  z-index: 10;
 }
 #navbar .navbar {
   padding: 10px;
@@ -148,6 +149,99 @@ body {
     display: none;
   }
   #navbar .navbar .sidebar .hamburger {
+    display: none;
+  }
+}
+
+#jumbotron {
+  margin-top: -80px;
+}
+#jumbotron .jumbo {
+  height: 620px;
+  position: relative;
+  background-image: url("../assets/image/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position-y: -100px;
+  clip-path: polygon(50% 0%, 100% 0, 100% 75%, 50% 100%, 0% 75%, 0 0);
+}
+#jumbotron .jumbo::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  background-image: linear-gradient(#9d6463, #e08786);
+  opacity: 0.85;
+  background-repeat: no-repeat;
+}
+#jumbotron .jumbo .jumbo-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 580px;
+}
+#jumbotron .jumbo .jumbo-left p:nth-child(1) {
+  color: white;
+  font-size: 28px;
+}
+#jumbotron .jumbo .jumbo-left p:nth-child(2) {
+  color: #282423;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 40px;
+  margin-top: -10px;
+}
+#jumbotron .jumbo .jumbo-left .buttons {
+  display: flex;
+}
+#jumbotron .jumbo .jumbo-left .buttons .btn-explore {
+  width: 150px;
+  height: 40px;
+  background-color: #e08786;
+  font-size: 18px;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid #282423;
+  transition: 0.5s;
+}
+#jumbotron .jumbo .jumbo-left .buttons .btn-explore:hover {
+  background-color: #282423;
+  color: #e08786;
+  font-size: 16px;
+}
+#jumbotron .jumbo .jumbo-left .buttons .btn-resume {
+  width: 150px;
+  height: 40px;
+  background-color: #282423;
+  font-size: 18px;
+  color: #e08786;
+  border-radius: 10px;
+  border: 2px solid white;
+  margin-left: 15px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+#jumbotron .jumbo .jumbo-left .buttons .btn-resume:hover {
+  background-color: #e08786;
+  color: #282423;
+  border: 2px solid #e08786;
+  font-size: 16px;
+}
+#jumbotron .jumbo .jumbo-right {
+  transform: translate(100px, 90px);
+}
+@media (max-width: 575.98px) {
+  #jumbotron .jumbo .jumbo-left p:nth-child(1) {
+    font-size: 24px;
+  }
+  #jumbotron .jumbo .jumbo-left p:nth-child(2) {
+    font-size: 36px;
+  }
+  #jumbotron .jumbo .jumbo-right {
     display: none;
   }
 }
