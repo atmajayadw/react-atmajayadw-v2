@@ -246,4 +246,33 @@ body {
   }
 }
 
+#about {
+  padding: 100px 0;
+  overflow: hidden;
+}
+#about .about-left img {
+  display: block;
+  margin: auto;
+  width: 280px;
+}
+#about .about-right {
+  transition: 0.5s;
+  overflow: hidden;
+}
+#about .about-right.show {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+#about .about-right h3 {
+  color: #b16c6c;
+}
+#about .about-right p {
+  color: #b16c6c;
+  letter-spacing: 2px;
+  line-height: 30px;
+  font-weight: lighter;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
 /*# sourceMappingURL=main.css.map */
