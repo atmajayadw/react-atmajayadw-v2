@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, Jumbotron } from "../components/home/index";
-import About from "../components/about/About";
+import { Navbar, Jumbotron, About, Expertise } from "../components/index";
 
 export default class Home extends Component {
   render() {
@@ -9,6 +8,7 @@ export default class Home extends Component {
         <Navbar />
         <Jumbotron />
         <About />
+        <Expertise />
       </>
     );
   }
