@@ -5,6 +5,7 @@ import {
   About,
   Expertise,
   PortfolioHome,
+  Footer,
 } from "../components/index";
 
 export default class Home extends Component {
@@ -16,6 +17,7 @@ export default class Home extends Component {
         <About />
         <Expertise />
         <PortfolioHome />
+        <Footer />
       </>
     );
   }

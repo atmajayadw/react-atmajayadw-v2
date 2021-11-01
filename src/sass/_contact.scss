@@ -1,0 +1,42 @@
+@use "setup";
+
+#contact {
+  padding-top: 35px;
+  border-top: 2px solid #e08786;
+  overflow: hidden;
+  .contact {
+    h3 {
+      color: #e08786;
+    }
+    p {
+      color: #e08786;
+      font-size: 18px;
+    }
+    img {
+      width: 180px;
+      display: block;
+      margin: auto;
+      margin-top: 30px;
+    }
+
+    .socmed {
+      width: 360px;
+      display: flex;
+      justify-content: space-around;
+      margin-left: -10px;
+      img {
+        width: 40px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .contact {
+      .socmed {
+        transform: translate(0px, -100px);
+        justify-content: space-between;
+      }
+    }
+  }
+}
