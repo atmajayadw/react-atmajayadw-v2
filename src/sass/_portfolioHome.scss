@@ -1,0 +1,118 @@
+@use "setup";
+
+#portfolio-home {
+  padding: 150px 0px 100px 0px;
+  position: relative;
+  margin-top: -80px;
+  overflow: hidden;
+  .portfolio {
+    position: relative;
+    h3,
+    h5 {
+      color: setup.$primaryColor;
+    }
+
+    .head {
+      .buttons {
+        display: flex;
+        margin: 50px 0px 30px 0px;
+        position: relative;
+
+        .portfolio-btn {
+          font-size: 16px;
+          color: #e08786;
+          cursor: pointer;
+          position: relative;
+          -webkit-transition: 0.5s;
+          transition: 0.5s;
+
+          &:nth-child(2) {
+            font-size: 16px;
+            color: setup.$primaryColor;
+            margin-left: 30px;
+          }
+
+          &.active {
+            font-weight: bold;
+
+            &::after {
+              content: "";
+              position: absolute;
+              bottom: -5px;
+              left: 0;
+              width: 100%;
+              height: 3px;
+              background-color: #e08786;
+            }
+          }
+        }
+      }
+    }
+
+    .portfolio-contents {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      .content-webdev {
+        width: 324px;
+        margin-top: 30px;
+        transition: 0.5s;
+        // transform: translate(0, -50px);
+        // opacity: 0;
+        &.show {
+          opacity: 1;
+          transform: translate(0, 0);
+        }
+
+        a {
+          color: setup.$primaryColor;
+          text-align: center;
+          margin-top: 10px;
+          text-decoration: none;
+          display: block;
+          transition: 0.5s;
+        }
+      }
+
+      .content-photo {
+        width: 311px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+        transition: 0.5s;
+        // transform: translate(0, -50px);
+        // opacity: 0;
+        &.show {
+          opacity: 1;
+          transform: translate(0, 0);
+        }
+
+        a {
+          text-decoration: none;
+        }
+        .btn-photo {
+          width: 150px;
+          height: 40px;
+          background-color: #282423;
+          font-size: 18px;
+          color: setup.$primaryColor;
+          border-radius: 10px;
+          border: 2px solid white;
+          text-align: center;
+          margin-top: -20px;
+          transition: 0.5s;
+          display: flex;
+          &:hover {
+            background-color: setup.$primaryColor;
+            color: white;
+          }
+
+          span {
+            margin: auto;
+          }
+        }
+      }
+    }
+  }
+}

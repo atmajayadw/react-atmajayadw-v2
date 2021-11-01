@@ -354,4 +354,105 @@ body {
   color: #b16c6c;
 }
 
+#portfolio-home {
+  padding: 150px 0px 100px 0px;
+  position: relative;
+  margin-top: -80px;
+  overflow: hidden;
+}
+#portfolio-home .portfolio {
+  position: relative;
+}
+#portfolio-home .portfolio h3,
+#portfolio-home .portfolio h5 {
+  color: #b16c6c;
+}
+#portfolio-home .portfolio .head .buttons {
+  display: flex;
+  margin: 50px 0px 30px 0px;
+  position: relative;
+}
+#portfolio-home .portfolio .head .buttons .portfolio-btn {
+  font-size: 16px;
+  color: #e08786;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+#portfolio-home .portfolio .head .buttons .portfolio-btn:nth-child(2) {
+  font-size: 16px;
+  color: #b16c6c;
+  margin-left: 30px;
+}
+#portfolio-home .portfolio .head .buttons .portfolio-btn.active {
+  font-weight: bold;
+}
+#portfolio-home .portfolio .head .buttons .portfolio-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #e08786;
+}
+#portfolio-home .portfolio .portfolio-contents {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+#portfolio-home .portfolio .portfolio-contents .content-webdev {
+  width: 324px;
+  margin-top: 30px;
+  transition: 0.5s;
+}
+#portfolio-home .portfolio .portfolio-contents .content-webdev.show {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+#portfolio-home .portfolio .portfolio-contents .content-webdev a {
+  color: #b16c6c;
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: none;
+  display: block;
+  transition: 0.5s;
+}
+#portfolio-home .portfolio .portfolio-contents .content-photo {
+  width: 311px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  transition: 0.5s;
+}
+#portfolio-home .portfolio .portfolio-contents .content-photo.show {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+#portfolio-home .portfolio .portfolio-contents .content-photo a {
+  text-decoration: none;
+}
+#portfolio-home .portfolio .portfolio-contents .content-photo .btn-photo {
+  width: 150px;
+  height: 40px;
+  background-color: #282423;
+  font-size: 18px;
+  color: #b16c6c;
+  border-radius: 10px;
+  border: 2px solid white;
+  text-align: center;
+  margin-top: -20px;
+  transition: 0.5s;
+  display: flex;
+}
+#portfolio-home .portfolio .portfolio-contents .content-photo .btn-photo:hover {
+  background-color: #b16c6c;
+  color: white;
+}
+#portfolio-home .portfolio .portfolio-contents .content-photo .btn-photo span {
+  margin: auto;
+}
+
 /*# sourceMappingURL=main.css.map */

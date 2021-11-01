@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { Navbar, Jumbotron, About, Expertise } from "../components/index";
+import {
+  Navbar,
+  Jumbotron,
+  About,
+  Expertise,
+  PortfolioHome,
+} from "../components/index";
 
 export default class Home extends Component {
   render() {
@@ -9,6 +15,7 @@ export default class Home extends Component {
         <Jumbotron />
         <About />
         <Expertise />
+        <PortfolioHome />
       </>
     );
   }
