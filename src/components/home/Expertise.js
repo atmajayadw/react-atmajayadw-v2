@@ -23,7 +23,7 @@ import {
   Lightroom,
   Premiere,
 } from "../../assets/icon/icons.js";
-// import { Memphis1, Memphis2 } from "../../assets/icon/icons.js";
+import { Memphis1, Memphis2 } from "../../assets/icon/icons.js";
 import $ from "jquery";
 
 export default class Expertise extends Component {
@@ -39,7 +39,7 @@ export default class Expertise extends Component {
     this.showSlides(this.slideIndex);
     this.showExpertise1();
     this.showExpertise2();
-    // this.parallaxMouse();
+    this.parallaxMouse();
   }
 
   currentSlide = (n) => {
@@ -85,10 +85,36 @@ export default class Expertise extends Component {
     });
   };
 
+  parallaxMouse = () => {
+    let object1 = $(".memphis1");
+    let object2 = $(".memphis2");
+    let layer = $("body");
+
+    layer.mousemove(function (e) {
+      var valueX = (window.innerWidth - e.pageX * 4) / 200;
+      var valueY = (window.innerWidth - e.pageY * 2) / 100;
+      object1.css({
+        transition: "0.1s",
+        transform: "translate(" + valueX + "%," + valueY + "px)",
+      });
+    });
+
+    layer.mousemove(function (e) {
+      var valueX = -(window.innerWidth - e.pageX * 4) / 200;
+      var valueY = -(window.innerWidth - e.pageY * 2) / 100;
+      object2.css({
+        transition: "0.1s",
+        transform: "translate(" + valueX + "%," + valueY + "px)",
+      });
+    });
+  };
+
   render() {
     return (
       <section id="expertise">
         <div className="container expertise">
+          <img src={Memphis1} alt="" className="img-fluid memphis1" />
+          <img src={Memphis2} alt="" className="img-fluid memphis2" />
           <div className="head">
             <h3>My Expertise</h3>
             <h5>as</h5>

@@ -31,6 +31,7 @@ class Navbar extends Component {
   };
 
   scroll = (params) => {
+    document.body.style.overflow = "auto";
     const elementhref = $(params);
 
     let split = params.split("#");

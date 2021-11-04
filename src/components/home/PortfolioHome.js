@@ -13,7 +13,7 @@ import {
   Thumbnail5,
 } from "../../assets/image/images.js";
 import $ from "jquery";
-// import { Memphis3 } from '../assets/icon/icons.js';
+import { Memphis3 } from "../../assets/icon/icons.js";
 import { Link } from "react-router-dom";
 
 export default class PortfolioHome extends Component {
@@ -29,8 +29,8 @@ export default class PortfolioHome extends Component {
     this.showSlides(this.state.slideIndex);
     this.showPortfolio1();
     this.showPortfolio2();
-    // this.parallaxMouse();
-    // window.addEventListener("scroll", this.parallaxScroll);
+    this.parallaxMouse();
+    window.addEventListener("scroll", this.parallaxScroll);
   }
 
   currentSlide = (n) => {
@@ -75,10 +75,60 @@ export default class PortfolioHome extends Component {
     });
   };
 
+  parallaxMouse = () => {
+    let object3 = $(".memphis3");
+    let object4 = $(".memphis4");
+    let layer2 = $("body");
+
+    layer2.mousemove(function (e) {
+      if ($(window).width() >= 575.98) {
+        var valueX = (window.innerWidth - e.pageX * 4) / 200;
+        var valueY = (window.innerWidth - e.pageY * 2) / 200;
+        object3.css({
+          transition: "0.1s",
+          transform: "translate(" + valueX + "%," + valueY + "px)",
+        });
+      }
+    });
+
+    layer2.mousemove(function (e) {
+      if ($(window).width() >= 575.98) {
+        var valueX = -(window.innerWidth - e.pageX * 4) / 200;
+        var valueY = -(window.innerWidth - e.pageY * 2) / 200;
+        object4.css({
+          transition: "0.1s",
+          transform: "translate(" + valueX + "%," + valueY + "px)",
+        });
+      }
+    });
+  };
+
+  parallaxScroll = () => {
+    let wScroll = $(window).scrollTop();
+
+    if ($("#expertise").length) {
+      if (wScroll > $("#expertise").offset().top + 200) {
+        if ($(window).width() <= 575.98) {
+          $(".memphis3").css({
+            transform: "translate(-" + wScroll / 90 + "%, 0px)",
+            "-webkit-transform": "translate(-" + wScroll / 90 + "%, 0px)",
+          });
+
+          $(".memphis4").css({
+            transform: "translate(" + wScroll / 220 + "%, 10px)",
+            "-webkit-transform": "translate(" + wScroll / 220 + "%, 10px)",
+          });
+        }
+      }
+    }
+  };
+
   render() {
     return (
       <section id="portfolio-home">
         <div className="container portfolio">
+          <img src={Memphis3} alt="" className="img-fluid memphis3" />
+          <img src={Memphis3} alt="" className="img-fluid memphis4" />
           <div className="head">
             <h3>My Portfolio as</h3>
             <div className="buttons">

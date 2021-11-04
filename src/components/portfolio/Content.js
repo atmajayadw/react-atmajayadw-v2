@@ -3,18 +3,45 @@ import { HashLink as Link } from "react-router-hash-link";
 import $ from "jquery";
 import axios from "axios";
 
+const Loader = () => (
+  <div className="divLoader">
+    <svg className="svgLoader" viewBox="0 0 100 100" width="10em" height="10em">
+      <path
+        stroke="none"
+        d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50"
+        fill="#7E8075"
+        transform="rotate(179.719 50 51)"
+      >
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          calcMode="linear"
+          values="0 50 51;360 50 51"
+          keyTimes="0;1"
+          dur="1s"
+          begin="0s"
+          repeatCount="indefinite"
+        ></animateTransform>
+      </path>
+    </svg>
+  </div>
+);
+
 export default class Content extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       categories: [],
+      loading: true,
     };
   }
 
   componentDidMount() {
     window.scrollTo(0, 0);
     this.getData();
+    document.body.style.overflow = "auto";
+    this.setLoaderOff();
   }
 
   componentDidUpdate() {
@@ -55,6 +82,10 @@ export default class Content extends Component {
           $("#modal-img").css({
             "max-width": "400px",
           });
+        } else if ($("#modal-img").height() < 500) {
+          $("#modal-img").css({
+            "max-width": "700px",
+          });
         }
       });
 
@@ -66,19 +97,45 @@ export default class Content extends Component {
     }
   };
 
+  setLoaderOff = () => {
+    document.body.style.overflow = "hidden";
+    const footer = document.querySelector("#contact");
+    footer.style.display = "none";
+    setTimeout(() => {
+      const loader = document.querySelector("#loader");
+      loader.style.display = "none";
+      this.setState({
+        loading: false,
+      });
+      document.body.style.overflow = "auto";
+      const jumbotron = document.querySelector("#content");
+      jumbotron.style.opacity = "1";
+      footer.style.display = "block";
+    }, 1200);
+  };
+
   render() {
     const { categories } = this.state;
 
     return (
       <>
-        <div id="modal" className="modal">
-          <span id="close-modal">x</span>
-          <img className="modal-content" id="modal-img" alt="" />
-          <div id="modal-caption"></div>
+        <div id="modal">
+          <div className="container">
+            <span id="close-modal">x</span>
+            <img className="modal-content" id="modal-img" alt="" />
+            <div id="modal-caption"></div>
+          </div>
         </div>
 
         <section id="content">
           <div className="container content">
+            <div className="container" id="loader">
+              {this.state.loading ? <Loader /> : null}
+              <p>
+                <i>loading...</i>
+              </p>
+            </div>
+
             <Link
               rel="noopenner noreferrer"
               to={{

@@ -55,11 +55,32 @@
           border-radius: 10px;
           border: 2px solid #282423;
           transition: 0.5s;
+          span {
+            animation: blink 1s linear infinite;
+          }
 
           &:hover {
             background-color: #282423;
             color: #e08786;
             font-size: 16px;
+          }
+
+          @keyframes blink {
+            0% {
+              opacity: 0;
+            }
+            25% {
+              opacity: 0.5;
+            }
+            50% {
+              opacity: 1;
+            }
+            75% {
+              opacity: 0.5;
+            }
+            100% {
+              opacity: 0;
+            }
           }
         }
 

@@ -8,6 +8,7 @@ export default class Jumbotron extends Component {
   }
   explore = () => {
     $(".btn-explore").on("click", function (e) {
+      // document.body.style.overflow = "hidden";
       const href = $(this).attr("href");
       const elementhref = $(href);
       $("html, body").animate(
@@ -17,6 +18,7 @@ export default class Jumbotron extends Component {
         1000,
         "easeInOutExpo"
       );
+      document.body.style.overflow = "auto";
       e.preventDefault();
     });
   };
@@ -37,7 +39,7 @@ export default class Jumbotron extends Component {
                 </p>
                 <div className="buttons">
                   <div className="btn btn-explore" href="#about">
-                    Explore
+                    <span>Explore</span>
                   </div>
                   <div className="btn btn-resume" href="#">
                     Resume

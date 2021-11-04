@@ -5,6 +5,20 @@
   position: relative;
   margin-top: -80px;
   overflow: hidden;
+
+  .memphis3 {
+    position: absolute;
+    left: 40%;
+    top: -20px;
+    z-index: -1;
+  }
+
+  .memphis4 {
+    position: absolute;
+    right: 10%;
+    top: 30px;
+    z-index: -1;
+  }
   .portfolio {
     position: relative;
     h3,
@@ -113,6 +127,26 @@
           }
         }
       }
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .memphis3 {
+      position: absolute;
+      left: -50px;
+      top: -110px;
+      z-index: -1;
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+
+    .memphis4 {
+      position: absolute;
+      right: -180px;
+      top: -30px;
+      z-index: -1;
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8);
     }
   }
 }
