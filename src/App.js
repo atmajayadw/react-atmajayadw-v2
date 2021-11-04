@@ -8,8 +8,13 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={Home} exact />
-          <Route path="/portfolio" component={Portfolio} exact />
+          <Route exact path="/" render={(props) => <Home {...props} />} />
+          <Route
+            exact
+            path="/portfolio"
+            render={(props) => <Portfolio {...props} />}
+          />
+          {/* <Route path="/portfolio" component={Portfolio} exact /> */}
         </Switch>
       </BrowserRouter>
     );

@@ -37,6 +37,9 @@ export default class Expertise extends Component {
 
   componentDidMount() {
     this.showSlides(this.slideIndex);
+    this.showExpertise1();
+    this.showExpertise2();
+    // this.parallaxMouse();
   }
 
   currentSlide = (n) => {
@@ -58,6 +61,28 @@ export default class Expertise extends Component {
     }
     slides[this.state.slideIndex - 1].style.display = "block";
     thumbs[this.state.slideIndex - 1].className += " active";
+  };
+
+  showExpertise1 = () => {
+    $(".btn-expertise .webdev-btn").on("click", function (e) {
+      $(".content").each(function (i) {
+        setTimeout(function () {
+          $(".content").eq(i).addClass("show");
+        }, 400 * (i + 1));
+      });
+      $(".content").removeClass("show");
+    });
+  };
+
+  showExpertise2 = () => {
+    $(".btn-expertise.photo-btn").on("click", function (e) {
+      $(".content-photo").each(function (i) {
+        setTimeout(function () {
+          $(".content-photo").eq(i).addClass("show");
+        }, 400 * (i + 1));
+      });
+      $(".content-photo").removeClass("show");
+    });
   };
 
   render() {
@@ -156,7 +181,7 @@ export default class Expertise extends Component {
             {/*  */}
 
             <div className="expertise-contents photo">
-              <div className="content">
+              <div className="content content-photo">
                 <p>Gears</p>
                 <div className="skills">
                   <div className="skill">

@@ -12,7 +12,7 @@ import {
   Thumbnail4,
   Thumbnail5,
 } from "../../assets/image/images.js";
-// import $ from 'jquery'
+import $ from "jquery";
 // import { Memphis3 } from '../assets/icon/icons.js';
 import { Link } from "react-router-dom";
 
@@ -27,8 +27,8 @@ export default class PortfolioHome extends Component {
 
   componentDidMount() {
     this.showSlides(this.state.slideIndex);
-    // this.showPortfolio1();
-    // this.showPortfolio2();
+    this.showPortfolio1();
+    this.showPortfolio2();
     // this.parallaxMouse();
     // window.addEventListener("scroll", this.parallaxScroll);
   }
@@ -51,6 +51,28 @@ export default class PortfolioHome extends Component {
     }
     slides[this.state.slideIndex - 1].style.display = "flex";
     thumbs[this.state.slideIndex - 1].className += " active";
+  };
+
+  showPortfolio1 = () => {
+    $(".portfolio-btn.webdev-btn").on("click", function (e) {
+      $(".content-webdev").each(function (i) {
+        setTimeout(function () {
+          $(".content-webdev").eq(i).addClass("show");
+        }, 300 * (i + 1));
+      });
+      $(".content-webdev").removeClass("show");
+    });
+  };
+
+  showPortfolio2 = () => {
+    $(".portfolio-btn.photo-btn").on("click", function (e) {
+      $(".content-photo").each(function (i) {
+        setTimeout(function () {
+          $(".content-photo").eq(i).addClass("show");
+        }, 300 * (i + 1));
+      });
+      $(".content-photo").removeClass("show");
+    });
   };
 
   render() {
@@ -149,7 +171,7 @@ export default class PortfolioHome extends Component {
               <img src={Thumbnail1} alt="Animal" className="img-fluid" />
               <Link
                 to={{
-                  pathname: "/photography/",
+                  pathname: "/portfolio/",
                   search: "?category=animal",
                   state: "animal",
                 }}
@@ -165,7 +187,7 @@ export default class PortfolioHome extends Component {
               <img src={Thumbnail2} alt="Portrait" className="img-fluid" />
               <Link
                 to={{
-                  pathname: "/photography/",
+                  pathname: "/portfolio/",
                   search: "?category=portrait",
                   state: "portrait",
                 }}
@@ -181,7 +203,7 @@ export default class PortfolioHome extends Component {
               <img src={Thumbnail3} alt="" className="img-fluid" />
               <Link
                 to={{
-                  pathname: "/photography/",
+                  pathname: "/portfolio/",
                   search: "?category=event",
                   state: "event",
                 }}
@@ -196,7 +218,7 @@ export default class PortfolioHome extends Component {
               <img src={Thumbnail4} alt="" className="img-fluid" />
               <Link
                 to={{
-                  pathname: "/photography/",
+                  pathname: "/portfolio/",
                   search: "?category=wedding",
                   state: "wedding",
                 }}
@@ -211,7 +233,7 @@ export default class PortfolioHome extends Component {
               <img src={Thumbnail5} alt="" className="img-fluid" />
               <Link
                 to={{
-                  pathname: "/photography/",
+                  pathname: "/portfolio/",
                   search: "?category=pre-wedding",
                   state: "pre-wedding",
                 }}

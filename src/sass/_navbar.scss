@@ -2,12 +2,21 @@
 
 #navbar {
   border-bottom: 1px solid whitesmoke;
-  background-color: transparent;
   position: relative;
   z-index: 10;
+
+  &.sticky {
+    position: fixed;
+    background-color: #e08786;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: 1s;
+    border-bottom: whitesmoke 2px solid;
+  }
+
   .navbar {
     padding: 10px;
-    // background-color: burlywood;
     display: flex;
     justify-content: space-between;
     .logo img {
@@ -21,7 +30,6 @@
       display: none;
       flex-direction: column;
       justify-content: center;
-      //   background-color: brown;
       ul {
         padding: 0;
         margin: 0;
@@ -68,6 +76,11 @@
             &:hover::before,
             &:hover::after {
               transform: scaleX(1);
+            }
+
+            &.active {
+              color: #282423;
+              font-weight: bold;
             }
           }
         }

@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { Logo } from "../../assets/icon/icons";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
+import "../../lib/jqueryeasing/jquery.easing.1.3.js";
+import $ from "jquery";
 
-export default class Navbar extends Component {
+class Navbar extends Component {
   componentDidMount() {
     this.hamburger();
+    window.addEventListener("scroll", this.stickyNavbar);
+    window.addEventListener("scroll", this.scrollFunctions);
   }
 
   hamburger = () => {
@@ -25,67 +30,158 @@ export default class Navbar extends Component {
     });
   };
 
+  scroll = (params) => {
+    const elementhref = $(params);
+
+    let split = params.split("#");
+    let result = ".link." + split.join("");
+    $(".link").removeClass("active");
+    $(result).addClass("active");
+
+    if (elementhref.length) {
+      $("html, body").animate(
+        {
+          scrollTop: elementhref.offset().top - 40,
+        },
+        1000,
+        "easeInOutExpo"
+      );
+    }
+  };
+
+  stickyNavbar = () => {
+    const fixbar = $("#navbar");
+
+    if (fixbar.length) {
+      if ($(document).scrollTop() > 100) {
+        fixbar.addClass("sticky");
+      } else {
+        fixbar.removeClass("sticky");
+      }
+    }
+  };
+
+  scrollFunctions = () => {
+    const wScroll = $(window).scrollTop();
+
+    if (wScroll >= 0) {
+      $(".link").removeClass("active");
+    }
+
+    if ($("#about").length) {
+      if (wScroll > $("#about").offset().top - 100) {
+        $("#about .about-left").addClass("show");
+        setTimeout(() => {
+          $("#about .about-right").addClass("show");
+        }, 500);
+        $(".link").removeClass("active");
+        $(".link.about").addClass("active");
+      }
+    }
+
+    if ($("#expertise").length) {
+      if (wScroll > $("#expertise").offset().top - 120) {
+        $(".content").each(function (i) {
+          setTimeout(function () {
+            $(".content").eq(i).addClass("show");
+          }, 400 * (i + 1));
+        });
+        $(".link").removeClass("active");
+        $(".link.expertise").addClass("active");
+      }
+    }
+
+    if ($("#portfolio-home").length) {
+      if (wScroll > $("#portfolio-home").offset().top - 120) {
+        $(".content-photo").each(function (i) {
+          setTimeout(function () {
+            $(".content-photo").eq(i).addClass("show");
+          }, 400 * (i + 1));
+        });
+        $(".link").removeClass("active");
+        $(".link.portfolio-home").addClass("active");
+      }
+    }
+
+    if (
+      $(window).scrollTop() + $(window).height() + 80 ===
+      $(document).height()
+    ) {
+      $(".link").removeClass("active");
+      $(".link.contact").addClass("active");
+    }
+  };
+
   render() {
     return (
       <>
         <section id="navbar">
           <div className="container navbar">
             <div className="logo">
-              <img src={Logo} alt="" />
+              <Link
+                to={{ pathname: "/" }}
+                onClick={() => this.scroll("#jumbotron")}
+              >
+                <img src={Logo} alt="" />
+              </Link>
             </div>
             <div className="links">
               <ul>
                 <li>
-                  <NavLink
-                    className="link about"
+                  <Link
+                    className="link about scroll"
                     rel="noopenner noreferrer"
                     to={{
                       pathname: "/",
+                      // hash: "#about",
                       params: "#about",
                     }}
-                    exact
+                    onClick={() => this.scroll("#about")}
                   >
                     <span>About</span>
-                  </NavLink>
+                  </Link>
                 </li>
                 <li>
-                  <NavLink
-                    className="link expertise"
+                  <Link
+                    className="link expertise scroll"
                     rel="noopenner noreferrer"
                     to={{
                       pathname: "/",
+                      // hash: "#expertise",
                       params: "#expertise",
                     }}
-                    exact
+                    onClick={() => this.scroll("#expertise")}
                   >
                     <span>Expertise</span>
-                  </NavLink>
+                  </Link>
                 </li>
                 <li>
-                  <NavLink
-                    className="link portfolio"
+                  <Link
+                    className="link portfolio-home scroll"
                     rel="noopenner noreferrer"
                     to={{
                       pathname: "/",
-                      params: "#portfolio",
+                      // hash: "#portfolio-home",
+                      params: "#portfolio-home",
                     }}
-                    exact
+                    onClick={() => this.scroll("#portfolio-home")}
                   >
                     <span>Portfolio</span>
-                  </NavLink>
+                  </Link>
                 </li>
                 <li>
-                  <NavLink
-                    className="link contact"
+                  <Link
+                    className="link contact scroll"
                     rel="noopenner noreferrer"
                     to={{
                       pathname: "/",
+                      // hash: "#contact",
                       params: "#contact",
                     }}
-                    exact
+                    onClick={() => this.scroll("#contact")}
                   >
                     <span>Contact</span>
-                  </NavLink>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -100,56 +196,52 @@ export default class Navbar extends Component {
               <div className="links">
                 <ul>
                   <li>
-                    <NavLink
+                    <Link
                       className="link about"
                       rel="noopenner noreferrer"
                       to={{
                         pathname: "/",
-                        params: "#about",
+                        hash: "#about",
                       }}
-                      exact
                     >
                       <span>About</span>
-                    </NavLink>
+                    </Link>
                   </li>
                   <li>
-                    <NavLink
+                    <Link
                       className="link expertise"
                       rel="noopenner noreferrer"
                       to={{
                         pathname: "/",
-                        params: "#expertise",
+                        hash: "#expertise",
                       }}
-                      exact
                     >
                       <span>Expertise</span>
-                    </NavLink>
+                    </Link>
                   </li>
                   <li>
-                    <NavLink
+                    <Link
                       className="link portfolio"
                       rel="noopenner noreferrer"
                       to={{
                         pathname: "/",
-                        params: "#portfolio",
+                        hash: "#portfolio-home",
                       }}
-                      exact
                     >
                       <span>Portfolio</span>
-                    </NavLink>
+                    </Link>
                   </li>
                   <li>
-                    <NavLink
+                    <Link
                       className="link contact"
                       rel="noopenner noreferrer"
                       to={{
                         pathname: "/",
-                        params: "#contact",
+                        hash: "#contact",
                       }}
-                      exact
                     >
                       <span>Contact</span>
-                    </NavLink>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -160,3 +252,5 @@ export default class Navbar extends Component {
     );
   }
 }
+
+export default withRouter(Navbar);

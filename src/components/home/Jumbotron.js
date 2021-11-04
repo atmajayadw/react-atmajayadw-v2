@@ -1,7 +1,26 @@
 import React, { Component } from "react";
 import { Profile1 } from "../../assets/image/images.js";
+import $ from "jquery";
 
 export default class Jumbotron extends Component {
+  componentDidMount() {
+    this.explore();
+  }
+  explore = () => {
+    $(".btn-explore").on("click", function (e) {
+      const href = $(this).attr("href");
+      const elementhref = $(href);
+      $("html, body").animate(
+        {
+          scrollTop: elementhref.offset().top - 80,
+        },
+        1000,
+        "easeInOutExpo"
+      );
+      e.preventDefault();
+    });
+  };
+
   render() {
     return (
       <section id="jumbotron">

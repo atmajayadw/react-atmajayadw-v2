@@ -5,10 +5,31 @@ import {
   About,
   Expertise,
   PortfolioHome,
-  Footer,
+  Contact,
 } from "../components/index";
+import $ from "jquery";
 
 export default class Home extends Component {
+  componentDidMount() {
+    this.getParams();
+  }
+  getParams = () => {
+    const params = this.props.location.params;
+    if (params === "") {
+      window.scrollTo(0, 0);
+    } else if (params) {
+      const elementhref = $(params);
+      if (elementhref.length) {
+        $("html, body").animate(
+          {
+            scrollTop: elementhref.offset().top - 40,
+          },
+          1000,
+          "easeInOutExpo"
+        );
+      }
+    }
+  };
   render() {
     return (
       <>
@@ -17,7 +38,7 @@ export default class Home extends Component {
         <About />
         <Expertise />
         <PortfolioHome />
-        <Footer />
+        <Contact />
       </>
     );
   }

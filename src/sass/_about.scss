@@ -5,16 +5,25 @@
   overflow: hidden;
 
   .about-left {
+    opacity: 0;
+    transform: translate(-50px, 0);
+    transition: 0.5s;
+    overflow: hidden;
     img {
       display: block;
       margin: auto;
       width: 280px;
     }
+
+    &.show {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
   }
 
   .about-right {
-    // opacity: 0;
-    // transform: translate(50px, 0);
+    opacity: 0;
+    transform: translate(50px, 0);
     transition: 0.5s;
     overflow: hidden;
 

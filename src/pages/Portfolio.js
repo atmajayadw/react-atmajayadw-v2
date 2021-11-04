@@ -1,7 +1,13 @@
 import React, { Component } from "react";
-
+import { Navbar, Contact, Content } from "../components/index";
 export default class Portfolio extends Component {
   render() {
-    return <div>Portfolio</div>;
+    return (
+      <>
+        <Navbar />
+        <Content />
+        <Contact />
+      </>
+    );
   }
 }
